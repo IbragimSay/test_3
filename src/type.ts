@@ -1,9 +1,12 @@
+
+type Role = "Admin" | "User"
+
 type UserT = {
     id: number
     mail: string
     password: string
     userName: string
-    posts?: PostT
+    posts?: PostT[]
 }
 type PostT = {
     id: number

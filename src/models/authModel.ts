@@ -2,7 +2,6 @@ import {PrismaClient} from '@prisma/client'
 import {UserT} from '../type'
 const prisma = new PrismaClient
 
-
 const findByMail = async ({mail}:{mail:string}):Promise<UserT | null>=>{
     const user = await prisma.user.findFirst({
         where: {
@@ -19,7 +18,6 @@ const findByUserName = async ({userName}:{userName:string}):Promise<UserT | null
     })
     return user
 }
-
 const createNewUser = async ({mail, userName, password}:{mail:string, userName:string, password:string})=>{
     await prisma.user.create({
         data: {
@@ -27,5 +25,4 @@ const createNewUser = async ({mail, userName, password}:{mail:string, userName:s
         }
     })
 }
-
 export {findByMail, findByUserName, createNewUser}

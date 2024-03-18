@@ -1,9 +1,16 @@
+import { PrismaClient } from '@prisma/client';
 import { Router } from 'express';
-import { lgoupController } from '../controllers/authController';
+import { logupController } from '../controllers/authController';
 
 const router = Router()
+const prisma = new PrismaClient
 
-router.post('/logup', lgoupController)
+const getar = async ()=>{
+    const user = await prisma.user.findMany()
+    console.log(user)
+}
+getar()
+router.post('/logup', logupController)
 router.post('/login', (req, res)=>{
     res.send('auth router')
 })
